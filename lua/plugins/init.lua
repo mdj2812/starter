@@ -85,4 +85,13 @@ return {
       vim.fn["mkdp#util#install"]()
     end,
   },
+
+  {
+    "mfussenegger/nvim-dap",
+    lazy = true,
+    ft = { "c", "cpp" },
+    config = function()
+      require "configs.nvim-dap"
+    end,
+  },
 }
