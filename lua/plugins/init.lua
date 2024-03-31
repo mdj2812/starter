@@ -7,7 +7,6 @@ return {
     end,
   },
 
-  -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -75,5 +74,15 @@ return {
     opts = {
       -- Your setup opts here
     },
+  },
+
+  {
+    "iamcco/markdown-preview.nvim",
+    lazy = true,
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
   },
 }
