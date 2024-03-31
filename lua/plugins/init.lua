@@ -52,7 +52,7 @@ return {
 
   {
     "APZelos/blamer.nvim",
-    lazy = false,
+    lazy = true,
     config = function()
       vim.g.blamer_enabled = 1
       vim.g.blamer_delay = 500
