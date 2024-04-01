@@ -12,14 +12,14 @@ dap.adapters.codelldb = {
   type = "server",
   port = "${port}",
   executable = {
-    command = "/home/malinux/Downloads/extension/adapter/codelldb",
+    command = "codelldb",
     args = { "--port", "${port}" },
   },
 }
 
 dap.configurations.c = {
   {
-    name = "Run executable (GDB)",
+    name = "Run executable (codelldb)",
     type = "codelldb",
     request = "launch",
     -- This requires special handling of 'run_last', see
@@ -30,11 +30,11 @@ dap.configurations.c = {
         default = vim.fn.getcwd() .. "/",
         completion = "file",
       }
-
       return (path and path ~= "") and path or dap.ABORT
     end,
     cwd = "${workspaceFolder}",
     stopAtEntry = true,
+    breakpointMode = "file",
     setupCommands = {
       {
         text = "-enable-pretty-printing",
@@ -44,7 +44,7 @@ dap.configurations.c = {
     },
   },
   {
-    name = "Run executable with arguments (GDB)",
+    name = "Run executable with arguments (codelldb)",
     type = "codelldb",
     request = "launch",
     -- This requires special handling of 'run_last', see
@@ -66,6 +66,7 @@ dap.configurations.c = {
     end,
     cwd = "${workspaceFolder}",
     stopAtEntry = false,
+    breakpointMode = "file",
     setupCommands = {
       {
         text = "-enable-pretty-printing",
@@ -75,16 +76,17 @@ dap.configurations.c = {
     },
   },
   {
-    name = "Attach to process (GDB)",
+    name = "Attach to process (codelldb)",
     type = "codelldb",
     request = "launch",
     MIMode = "gdb",
     miDebuggerServerAddress = "localhost:1234",
-    miDebuggerPath = "/usr/bin/gdb",
+    miDebuggerPath = "gdb",
     program = function()
       return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
     end,
     cwd = "${workspaceFolder}",
+    breakpointMode = "file",
     setupCommands = {
       {
         text = "-enable-pretty-printing",
