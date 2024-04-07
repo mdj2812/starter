@@ -1,4 +1,3 @@
-
 local options = {
   formatters_by_ft = {
     cpp = { "clang-format" },
@@ -7,6 +6,7 @@ local options = {
     json = { "jq" },
     -- css = { "prettier" },
     -- html = { "prettier" },
+    ["*"] = { "codespell" },
     ["_"] = { "trim_whitespace" },
   },
   formatters = {
@@ -15,9 +15,9 @@ local options = {
     },
     jq = {
       args = { "--indent", "4" },
-    }
+    },
   },
-  format_on_save = {
+  format_after_save = {
     -- These options will be passed to conform.format()
     timeout_ms = 1000,
     lsp_fallback = true,
