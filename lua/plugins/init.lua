@@ -26,6 +26,7 @@ return {
         "clang-format",
         "codespell",
         "codelldb",
+        "python-lsp-server",
       },
     },
   },
